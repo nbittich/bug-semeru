@@ -1,0 +1,13 @@
+FROM ubuntu
+RUN apt update && apt upgrade -y && apt install wget -y
+
+WORKDIR /java
+RUN wget https://github.com/ibmruntimes/semeru19-binaries/releases/download/jdk-19.0.2%2B7_openj9-0.37.0/ibm-semeru-open-jdk_x64_linux_19.0.2_7_openj9-0.37.0.tar.gz
+RUN tar -xf ibm-semeru-open-jdk_x64_linux_19.0.2_7_openj9-0.37.0.tar.gz
+ENV JAVA_HOME=/java/jdk-19.0.2+7
+RUN rm *.tar.gz
+
+COPY . .
+RUN bash mvnw clean install
+ENV PATH_TO_SCRIPT=/java/test.js
+ENTRYPOINT ["/java/jdk-19.0.2+7/bin/java", "-jar", "./target/demo-0.0.1-SNAPSHOT.jar"]
