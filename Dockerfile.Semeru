@@ -10,4 +10,4 @@ RUN rm *.tar.gz
 COPY . .
 RUN bash mvnw clean install
 ENV PATH_TO_SCRIPT=/java/test.js
-ENTRYPOINT ["/java/jdk-19.0.2+7/bin/java", "-jar", "./target/demo-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["/java/jdk-19.0.2+7/bin/java", "-jar", "./target/demo-0.0.1-SNAPSHOT-jar-with-dependencies.jar"]
