@@ -1,6 +1,14 @@
 # Example bug semeru + graal.js
 demo bug with Semeru & Graal.js
 
+## Update:
+
+It seems to be a problem with disabled compact strings (which seems to be the default on the mentioned JVM).
+
+You can work around this using -XX:+CompactStrings JVM command line option.
+
+Thank you, Jan Štola!
+
 ## Context:
 
 console outputs weird characters when eval a simple js script (using console.log).
